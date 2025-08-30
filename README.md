@@ -1,4 +1,4 @@
-﻿# 🎵 Fullstack Spotify Clone
+# 🎵 Fullstack Spotify Clone
 
 A fullstack music streaming app inspired by Spotify, built with modern web technologies.
 
