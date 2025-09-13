@@ -23,7 +23,7 @@ export default function Navbar() {
           <MdHomeFilled />
         </Link>
         <div className="bg-backgroud hidden lg:flex items-center h-11 w-90 px-3 gap-3 rounded-full text-primary-text">
-          <GoSearch className="text-primary-text shrink-0" />
+          <GoSearch className="text-primary-text shrink-0" size={22} />
           <input
             type="text"
             placeholder="What do you want to play?"
