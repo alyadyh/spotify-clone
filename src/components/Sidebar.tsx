@@ -7,6 +7,7 @@ import coverImage1 from "../assets/images/cover-michael-jackson.jpeg";
 import coverImage2 from "../assets/images/cover-backstreet-boys.jpeg";
 import coverImage3 from "../assets/images/cover-enhypen.jpeg";
 import coverImage4 from "../assets/images/cover-edsheeran.jpg";
+import coverImage5 from "../assets/images/cover-tulus.jpg";
 import { RxDotFilled } from "react-icons/rx";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { useState } from "react";
@@ -102,6 +103,26 @@ export default function Sidebar() {
                 <p>Album</p>
                 <RxDotFilled className="mt-1" />
                 <p>Ed Sheeran</p>
+              </div>
+            </div>
+          </div>
+
+          {/* List 5 */}
+          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+            <Image
+              src={coverImage5}
+              alt="cover-image"
+              width={300}
+              height={300}
+              className="w-10 h-10 object-cover rounded-md"
+            />
+
+            <div>
+              <p className="text-primary-text font-semibold">Manusia</p>
+              <div className="flex flex-row items-center text-secondary-text text-sm">
+                <p>Album</p>
+                <RxDotFilled className="mt-1" />
+                <p>Tulus</p>
               </div>
             </div>
           </div>
