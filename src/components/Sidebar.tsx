@@ -25,6 +25,87 @@ export default function Sidebar() {
             <LuPlus size={20} />
           </Link>
         </div>
+        <div>
+          {/* List 1 */}
+          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+            <Image
+              src={coverImage1}
+              alt="cover-image"
+              width={300}
+              height={300}
+              className="w-10 h-10 object-cover rounded-md"
+            />
+
+            <div>
+              <p className="text-primary-text font-semibold">Thriller</p>
+              <div className="flex flex-row items-center text-secondary-text text-sm">
+                <p>Album</p>
+                <RxDotFilled className="mt-1" />
+                <p>Michael Jackson</p>
+              </div>
+            </div>
+          </div>
+
+          {/* List 2 */}
+          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+            <Image
+              src={coverImage2}
+              alt="cover-image"
+              width={300}
+              height={300}
+              className="w-10 h-10 object-cover rounded-md"
+            />
+
+            <div>
+              <p className="text-primary-text font-semibold">Millenium</p>
+              <div className="flex flex-row items-center text-secondary-text text-sm">
+                <p>Album</p>
+                <RxDotFilled className="mt-1" />
+                <p>Backstreet Boys</p>
+              </div>
+            </div>
+          </div>
+
+          {/* List 3 */}
+          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+            <Image
+              src={coverImage3}
+              alt="cover-image"
+              width={300}
+              height={300}
+              className="w-10 h-10 object-cover rounded-md"
+            />
+
+            <div>
+              <p className="text-primary-text font-semibold">宵-YOI-</p>
+              <div className="flex flex-row items-center text-secondary-text text-sm">
+                <p>Single</p>
+                <RxDotFilled className="mt-1" />
+                <p>ENHYPEN</p>
+              </div>
+            </div>
+          </div>
+
+          {/* List 4 */}
+          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+            <Image
+              src={coverImage4}
+              alt="cover-image"
+              width={300}
+              height={300}
+              className="w-10 h-10 object-cover rounded-md"
+            />
+
+            <div>
+              <p className="text-primary-text font-semibold">÷ (Deluxe)</p>
+              <div className="flex flex-row items-center text-secondary-text text-sm">
+                <p>Album</p>
+                <RxDotFilled className="mt-1" />
+                <p>Ed Sheeran</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </aside>
 
       <button
