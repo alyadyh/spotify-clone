@@ -8,9 +8,7 @@ import coverImage5 from "../assets/images/cover-tulus.jpg";
 export default function AllSongs() {
   return (
     <div className="min-h-[90vh] bg-background my-15 p-4 lg:ml-80 rounded-lg mx-4">
-      <h2 className="text-2xl text-white mb-1 font-bold">
-        Recently Played
-      </h2>
+      <h2 className="text-2xl text-white mb-1 font-bold">Recently Played</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
         {/* List 1 */}
         <div className="bg-background p-3 cursor-pointer rounded-md hover:bg-hover">
