@@ -23,7 +23,7 @@ export default function Page() {
             className="w-full p-2 rounded-md outline-none border-1 border-neutral-600 text-primary-text placeholder-neutral-600 mb-6 focus:text-secondary-text"
           />
           <input
-            type="email"
+            type="password"
             placeholder="Your Password"
             className="w-full p-2 rounded-md outline-none border-1 border-neutral-600 text-primary-text placeholder-neutral-600 mb-6 focus:text-secondary-text"
           />
@@ -33,7 +33,7 @@ export default function Page() {
           <div className="text-secondary-text text-center my-6">
             <span>Don&apos;t have an account?</span>
             <Link
-              href="/signup"
+              href="signup"
               className="ml-2 text-white underline hover:text-primary"
             >
               Sign up now
