@@ -4,6 +4,7 @@ import coverImage2 from "../assets/images/cover-backstreet-boys.jpeg";
 import coverImage3 from "../assets/images/cover-enhypen.jpeg";
 import coverImage4 from "../assets/images/cover-edsheeran.jpg";
 import coverImage5 from "../assets/images/cover-tulus.jpg";
+import { IoMdPlay } from "react-icons/io";
 
 export default function AllSongs() {
   return (
@@ -11,7 +12,10 @@ export default function AllSongs() {
       <h2 className="text-2xl text-white mb-1 font-bold">Recently Played</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
         {/* List 1 */}
-        <div className="bg-background p-3 cursor-pointer rounded-md hover:bg-hover">
+        <div className="relative bg-background p-3 cursor-pointer rounded-md hover:bg-hover group">
+          <button className="bg-primary w-12 h-12 rounded-full grid place-items-center absolute bottom-8 right-5 opacity-0 group-hover:opacity-100 group-hover:bottom-18 transition-all duration-300 easy-in-out cursor-pointer">
+            <IoMdPlay />
+          </button>
           <Image
             src={coverImage1}
             alt="Album 1"

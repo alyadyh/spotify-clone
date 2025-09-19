@@ -11,6 +11,7 @@ import coverImage5 from "../assets/images/cover-tulus.jpg";
 import { RxDotFilled } from "react-icons/rx";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
 export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,7 +29,10 @@ export default function Sidebar() {
         </div>
         <div>
           {/* List 1 */}
-          <div className="flex gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover-bg-hover">
+          <div className="flex relative gap-2 items-center cursor-pointer mb-4 p-2 rounded-lg hover:bg-hover group">
+            <button className="text-secondary-text absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer hidden group-hover:block">
+              <FaTrash />
+            </button>
             <Image
               src={coverImage1}
               alt="cover-image"
