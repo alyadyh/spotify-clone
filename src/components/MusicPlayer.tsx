@@ -11,14 +11,14 @@ import {
 } from "react-icons/io";
 import { LuRepeat1 } from "react-icons/lu";
 import { MdOutlineQueueMusic } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState();
+  const [duration, setDuration] = useState(0);
 
   const togglePlayPause = () => {
     if (!audioRef.current) return;
@@ -28,6 +28,32 @@ export default function MusicPlayer() {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime); //updating the song every second
+      setDuration(audio.duration | 0);
+    };
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("loadmetadata", handleTimeUpdate);
+  }, []);
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
+  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(event.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   return (
@@ -67,18 +93,20 @@ export default function MusicPlayer() {
 
           <div className="w-full flex justify-center items-center gap-2">
             <span className="text-secondary-text font-normal text-sm">
-              1:30
+              {formatTime(currentTime)}
             </span>
             <div className="w-full">
               <input
+                onChange={handleSeek}
                 type="range"
                 min={0}
-                max={100}
+                max={duration}
+                value={currentTime}
                 className="w-full outline-none h-1 bg-zinc-700 rounded-md appearance-none accent-white"
               />
             </div>
             <span className="text-secondary-text font-normal text-sm">
-              3:35
+              {formatTime(duration)}
             </span>
           </div>
         </div>
