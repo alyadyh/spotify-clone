@@ -8,10 +8,11 @@ import {
   IoMdSkipBackward,
   IoMdSkipForward,
   IoMdVolumeHigh,
+  IoMdVolumeOff,
 } from "react-icons/io";
 import { LuRepeat1 } from "react-icons/lu";
 import { MdOutlineQueueMusic } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -19,6 +20,7 @@ export default function MusicPlayer() {
   const [volume, setVolume] = useState(50);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [previousVolume, setPreviousVolume] = useState(0);
 
   const togglePlayPause = () => {
     if (!audioRef.current) return;
@@ -42,6 +44,12 @@ export default function MusicPlayer() {
     audio.addEventListener("loadmetadata", handleTimeUpdate);
   }, []);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
+
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -53,6 +61,31 @@ export default function MusicPlayer() {
     if (audioRef.current) {
       audioRef.current.currentTime = newTime;
       setCurrentTime(newTime);
+    }
+  };
+
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value) / 100;
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+      setVolume(newVolume * 100);
+    }
+  };
+
+  const toggleMute = () => {
+    if (volume === 0) {
+      // in unmute state
+      setVolume(previousVolume);
+      if (audioRef.current) {
+        audioRef.current.volume = previousVolume / 100;
+      }
+    } else {
+      // in mute state
+      setPreviousVolume(volume);
+      setVolume(0);
+      if (audioRef.current) {
+        audioRef.current.volume = 0;
+      }
     }
   };
 
@@ -118,10 +151,26 @@ export default function MusicPlayer() {
           <button className="text-secondary-text text-xl cursor-pointer">
             <MdOutlineQueueMusic />
           </button>
-          <button className="text-secondary-text text-xl cursor-pointer">
-            <IoMdVolumeHigh />
-          </button>
+
+          {/* Toggle Mute Music */}
+          {volume === 0 ? (
+            <button
+              onClick={toggleMute}
+              className="text-secondary-text text-xl cursor-pointer"
+            >
+              <IoMdVolumeOff />
+            </button>
+          ) : (
+            <button
+              onClick={toggleMute}
+              className="text-secondary-text text-xl cursor-pointer"
+            >
+              <IoMdVolumeHigh />
+            </button>
+          )}
           <input
+            onChange={handleVolumeChange}
+            value={volume}
             type="range"
             min={0}
             max={100}
