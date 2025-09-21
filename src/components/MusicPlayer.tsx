@@ -32,24 +32,6 @@ export default function MusicPlayer() {
     setIsPlaying(!isPlaying);
   };
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleTimeUpdate = () => {
-      setCurrentTime(audio.currentTime); //updating the song every second
-      setDuration(audio.duration | 0);
-    };
-    audio.addEventListener("timeupdate", handleTimeUpdate);
-    audio.addEventListener("loadmetadata", handleTimeUpdate);
-  }, []);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume / 100;
-    }
-  }, [volume]);
-
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -88,6 +70,24 @@ export default function MusicPlayer() {
       }
     }
   };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime); //updating the song every second
+      setDuration(audio.duration | 0);
+    };
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("loadmetadata", handleTimeUpdate);
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-black text-white px-4 py-3 shadow-md z-50">
