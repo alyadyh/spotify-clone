@@ -12,7 +12,7 @@ import {
 } from "react-icons/io";
 import { LuRepeat1 } from "react-icons/lu";
 import { MdOutlineQueueMusic } from "react-icons/md";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -91,7 +91,7 @@ export default function MusicPlayer() {
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-black text-white px-4 py-3 shadow-md z-50">
-      <audio ref={audioRef} src="/audio/Thriller.mp3" controls></audio>
+      <audio ref={audioRef} src="/audio/Thriller.mp3"></audio>
       <div className="max-w-8xl w-[95%] mx-auto flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Image
