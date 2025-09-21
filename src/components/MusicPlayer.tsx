@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import coverImage1 from "../assets/images/cover-michael-jackson.jpeg";
 import {
+  IoMdPause,
   IoMdPlay,
   IoMdSkipBackward,
   IoMdSkipForward,
@@ -8,10 +11,28 @@ import {
 } from "react-icons/io";
 import { LuRepeat1 } from "react-icons/lu";
 import { MdOutlineQueueMusic } from "react-icons/md";
+import { useRef, useState } from "react";
 
 export default function MusicPlayer() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(50);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState();
+
+  const togglePlayPause = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="fixed bottom-0 left-0 w-full bg-black text-white px-4 py-3 shadow-md z-50">
+      <audio ref={audioRef} src="/audio/Thriller.mp3" controls></audio>
       <div className="max-w-8xl w-[95%] mx-auto flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Image
@@ -33,8 +54,11 @@ export default function MusicPlayer() {
             <button className="text-xl text-secondary-text">
               <IoMdSkipBackward />
             </button>
-            <button className="bg-white text-xl text-black w-10 h-10 rounded-full grid place-items-center">
-              <IoMdPlay />
+            <button
+              className="bg-white text-xl text-black w-10 h-10 rounded-full grid place-items-center cursor-pointer"
+              onClick={togglePlayPause}
+            >
+              {isPlaying ? <IoMdPause /> : <IoMdPlay />}
             </button>
             <button className="text-xl text-secondary-text">
               <IoMdSkipForward />
