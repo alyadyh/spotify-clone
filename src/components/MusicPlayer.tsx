@@ -12,7 +12,8 @@ import {
 } from "react-icons/io";
 import { LuRepeat1 } from "react-icons/lu";
 import { MdOutlineQueueMusic } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { PlayerContext } from "../../layouts/FrontendLayout";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -21,6 +22,14 @@ export default function MusicPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [previousVolume, setPreviousVolume] = useState(0);
+
+  const context = useContext(PlayerContext);
+
+  if (!context) {
+    throw new Error("Player context must be within a provider");
+  }
+
+  const { isQueueModalOpen, setIsQueueModalOpen } = context;
 
   const togglePlayPause = () => {
     if (!audioRef.current) return;
@@ -148,7 +157,10 @@ export default function MusicPlayer() {
           <button>
             <LuRepeat1 />
           </button>
-          <button className="text-secondary-text text-xl cursor-pointer">
+          <button
+            onClick={() => setIsQueueModalOpen(!isQueueModalOpen)}
+            className="text-secondary-text text-xl cursor-pointer"
+          >
             <MdOutlineQueueMusic />
           </button>
 

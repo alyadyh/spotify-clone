@@ -1,14 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import coverImage1 from "../assets/images/cover-michael-jackson.jpeg";
 import coverImage3 from "../assets/images/cover-enhypen.jpeg";
 import coverImage4 from "../assets/images/cover-edsheeran.jpg";
 import coverImage5 from "../assets/images/cover-tulus.jpg";
+import { useContext } from "react";
+import { PlayerContext } from "../../layouts/FrontendLayout";
 
 export default function Queue() {
+  const context = useContext(PlayerContext);
+
+  if (!context) {
+    throw new Error("Player context must be within a provider");
+  }
+
+  const { isQueueModalOpen } = context;
+
+  if (!isQueueModalOpen) return null;
+
   return (
     <div className="fixed top-18 right-8 z-50 max-w-[300px] w-full h-[75vh] bg-black border-1 p-4 overflow-y-auto rounded-md">
       <h2 className="text-white font-bold">Queue</h2>
       <div className="mt-8">
+        {/* Now playing list */}
         <h2 className="text-white font-bold mb-3">Now Playing</h2>
         <div className="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-hover">
           <Image
@@ -24,6 +39,8 @@ export default function Queue() {
           </div>
         </div>
       </div>
+
+      {/* Next up list */}
       <div className="mt-8">
         <h2 className="text-white font-bold mb-3">Next up</h2>
         <div className="flex flex-col gap-1">
