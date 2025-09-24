@@ -134,7 +134,7 @@ export default function Sidebar() {
       </aside>
 
       <button
-        className="fixed bottom-5 left-5 w-12 h-12 grid place-items-center bg-background p-4 rounded-full text-white z-50 cursor-pointer"
+        className="fixed bottom-26 left-5 w-12 h-12 grid place-items-center bg-black p-4 rounded-full text-white z-50 cursor-pointer"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         <MdOutlineLibraryMusic />
