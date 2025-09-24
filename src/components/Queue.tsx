@@ -36,7 +36,7 @@ export default function Queue() {
               className="rounded-md w-10 h-10 object-cover"
             />
             <div>
-              <p className="text-primary font-semibold">Echoes</p>
+              <p className="text-white font-semibold">Echoes</p>
               <p className="text-secondary-text text-sm">Enhypen</p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function Queue() {
               className="rounded-md w-10 h-10 object-cover"
             />
             <div>
-              <p className="text-primary font-semibold">Manusia</p>
+              <p className="text-white font-semibold">Manusia</p>
               <p className="text-secondary-text text-sm">Tulus</p>
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function Queue() {
               className="rounded-md w-10 h-10 object-cover"
             />
             <div>
-              <p className="text-primary font-semibold">Perfect</p>
+              <p className="text-white font-semibold">Perfect</p>
               <p className="text-secondary-text text-sm">Ed Sheeran</p>
             </div>
           </div>
