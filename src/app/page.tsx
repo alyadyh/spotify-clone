@@ -1,6 +1,7 @@
 import AllSongs from "@/components/AllSongs";
 import MusicPlayer from "@/components/MusicPlayer";
 import Navbar from "@/components/Navbar";
+import Queue from "@/components/Queue";
 import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Sidebar />
+        <Queue />
         <MusicPlayer />
         <AllSongs />
       </main>
