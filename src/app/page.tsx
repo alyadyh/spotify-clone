@@ -1,5 +1,12 @@
+import AllSongs from "@/components/AllSongs";
+import FrontendLayout from "../../layouts/FrontendLayout";
+
 export default function Home() {
   return (
-    <h1>Hello world.</h1>
+    <FrontendLayout>
+      <div className="min-h-screen">
+        <AllSongs />
+      </div>
+    </FrontendLayout>
   );
 }
